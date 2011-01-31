@@ -4,7 +4,12 @@ require 'shoulda'
 
 # output the day number (column one) with the smallest temperature spread (the maximum temperature is the second column, the minimum the third column). 
 
+class WeatherDataRow < Struct.new(:day, :max_temp, :min_temp); end
+
 class WeatherDataParser
+  def row_for_day(day)
+    WeatherDataRow.new(1, 88, 59)
+  end
 end
 
 class WeatherDataTest < Test::Unit::TestCase 
