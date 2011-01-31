@@ -2,14 +2,17 @@ require 'test/unit'
 require 'rubygems'
 require 'shoulda'
 
-class WeatherDataTest < Test::Unit::TestCase
-  should "some test description" do
-    #test body
-  end
+# output the day number (column one) with the smallest temperature spread (the maximum temperature is the second column, the minimum the third column). 
 
-  context "When I do something then" do
-    should "behave in some fashion" do
-      #...
+
+
+class WeatherDataTest < Test::Unit::TestCase 
+  context "given a parsed weather data file" do
+    should "output a day number" 
+
+    context "and given a particular day" do
+      should "know the maximum temperature"
+      should "know the minimum temperature"
     end
   end
 end
