@@ -8,9 +8,14 @@ require 'shoulda'
 
 class WeatherDataTest < Test::Unit::TestCase 
   context "given a parsed weather data file" do
-    should "output a day number" 
+    setup do
+      @parser = WeatherDataParser.new("./weather.dat")
+    end
 
-    context "and given a particular day" do
+    should "output day number with smallest temperature difference"
+
+    context "for any given day" do
+      should "know the day number" 
       should "know the maximum temperature"
       should "know the minimum temperature"
     end
