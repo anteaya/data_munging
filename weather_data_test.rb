@@ -7,12 +7,14 @@ require 'shoulda'
 class WeatherDataRow < Struct.new(:day, :max_temp, :min_temp); end
 
 class WeatherDataParser
+  attr_reader :file_path  
+
+  def initialize(file_path)
+    @file_path = file_path
+  end
+
   def row_for_day(day)
-    if day == 1
-      WeatherDataRow.new(1, 88, 59)
-    else
-      WeatherDataRow.new(30, 90, 45)
-    end
+    #  WeatherDataRow.new(30, 90, 45)
   end
 end
 
@@ -20,6 +22,10 @@ class WeatherDataTest < Test::Unit::TestCase
   context "given a parsed weather data file" do
     setup do
       @parser = WeatherDataParser.new("./weather.dat")
+    end
+
+    should "know the path to the data file" do
+      assert_equal "./weather.dat", @parser.file_path
     end
 
     should "output day number with smallest temperature difference"
