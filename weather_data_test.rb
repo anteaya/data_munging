@@ -4,7 +4,8 @@ require 'shoulda'
 
 # output the day number (column one) with the smallest temperature spread (the maximum temperature is the second column, the minimum the third column). 
 
-
+class WeatherDataParser
+end
 
 class WeatherDataTest < Test::Unit::TestCase 
   context "given a parsed weather data file" do
@@ -14,10 +15,40 @@ class WeatherDataTest < Test::Unit::TestCase
 
     should "output day number with smallest temperature difference"
 
-    context "for any given day" do
-      should "know the day number" 
-      should "know the maximum temperature"
-      should "know the minimum temperature"
+    context "for day 1" do
+      setup do
+        @row = @parser.row_for_day 1
+      end
+
+      should "know the day number" do
+        assert_equal 1, @row.day
+      end
+
+      should "know the maximum temperature" do
+        assert_equal 88, @row.max_temp
+      end
+
+      should "know the minimum temperature" do
+        assert_equal 59, @row.min_temp
+      end
+    end
+
+    context "for day 30" do
+      setup do
+        @row = @parser.row_for_day 30
+      end
+
+      should "know the day number" do
+        assert_equal 30, @row.day
+      end
+
+      should "know the maximum temperature" do
+        assert_equal 90, @row.max_temp
+      end
+
+      should "know the minimum temperature" do
+        assert_equal 45, @row.min_temp
+      end
     end
   end
 end
