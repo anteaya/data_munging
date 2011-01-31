@@ -8,7 +8,11 @@ class WeatherDataRow < Struct.new(:day, :max_temp, :min_temp); end
 
 class WeatherDataParser
   def row_for_day(day)
-    WeatherDataRow.new(1, 88, 59)
+    if day == 1
+      WeatherDataRow.new(1, 88, 59)
+    else
+      WeatherDataRow.new(30, 90, 45)
+    end
   end
 end
 
